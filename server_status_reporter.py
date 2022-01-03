@@ -4,10 +4,9 @@ __author__ = "Murali Kanagala"
 __credits__ = ["Murali Kanagala"]
 __version__ = "1.0.1"
 __maintainer__ = "Murali Kanagala"
-__email__ = "muralikanagala@outlook.com"
 __status__ = "Production"
 
-# server_status_reporter.py
+# http_server_monitor.py
 # Python3 script to collect json responses from http end points and perform aggregations based on the configuration.
 # Requires the configuration file passed as an argument
 # Requires the list of http endpoints to collect data from.
@@ -155,7 +154,7 @@ class ServerStatus:
 # MAIN
 if __name__ == '__main__':
     # argument parser
-    parser = argparse.ArgumentParser(description='Server status monitor')
+    parser = argparse.ArgumentParser(description='Http server monitor')
     parser.add_argument('-c', action="store", dest="config_file", help='configuration yml file', required=True)
     parser.add_argument('-s', action="store", dest="server_list", help='file with list of servers', required=True)
     args = parser.parse_args()
