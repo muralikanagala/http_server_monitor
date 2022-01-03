@@ -1,0 +1,46 @@
+config:
+  name: Server Status Test
+  timeout: 5  # aiohttp request timeout
+
+check:
+  name: "server status"
+  path: "/status"
+
+  validate_properties:  # list of properties you are expecting to see and their types in the json response from the endpoint.
+    - name: Application
+      type: str
+    - name: Success_Count
+      type: int
+    - name: Request_Count
+      type: int
+    - name: Version
+      type: str
+
+  extractions:  # json properties to extract from the response from the endpoint.
+      application: Application
+      request_count: Request_Count
+      success_count: Success_Count
+      version: Version
+
+  calculations:  # math operations to perform between the extracted values defined in the section above.
+    - new_var: success_rate  # new variable name with the value calculated from the operation below.
+      operation: division # val1/val2
+      val1: success_count
+      val2: request_count
+
+  aggregations: # after collecting the data from all the endpoints below aggregations are performed, average_by and sum_by are supported.
+    - type: average_by
+      value_field: success_rate  # the filed (with numerical value) for which the average is calculated.
+      fields:  # average by these two fields from the extracted values from the extraction section above.
+        - application
+        - version
+
+  outputs:  # produce output from all the endpoint data, calculations and aggregations.
+      - type: file # write to a file.
+        name: output.json   # file name.
+        format: json  # file format, json and yaml are supported.
+      - type: console  # print to the screen.
+        template: Application $application with Version $version has average success rate of $average # console output template, variables (with $ symbol) should be from the fields and aggregation results.
+      - type: file
+        name: output.yml
+        format: yml
