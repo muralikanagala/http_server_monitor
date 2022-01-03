@@ -1,4 +1,4 @@
-# Server Status Reporter
+# HTTP Server Monitor
 
 Python3 script to collect JSON responses from HTTP endpoints and perform aggregations based on the configuration.
 This script requires a configuration file(config.yml) and a text file with the list of servers (servers.txt) passed as command line parameters.
@@ -85,7 +85,7 @@ check:
 
 To start the script run the below.
 ```bash
-python server_status_reporter.py -c config.yml -s servers.txt
+python http_server_monitor.py -c config.yml -s servers.txt
 ```
 
 ## support
