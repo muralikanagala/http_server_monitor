@@ -88,6 +88,3 @@ To start the script run the below.
 python http_server_monitor.py -c config.yml -s servers.txt
 ```
 
-## support
-Please send an email to muralikanagala@outlook.com
-
