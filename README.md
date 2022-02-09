@@ -27,7 +27,7 @@ pip install -r requirements.txt
 Create a server.txt file with the list of endpoints. Do not prefix HTTP/HTTPS or suffix with the  request path.
 If there is a port number it is needed to be there. 
 
-For exmaple, 
+For example, 
 ```bash
 server-1
 server-2.example.com:9999
